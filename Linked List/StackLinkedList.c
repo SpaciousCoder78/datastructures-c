@@ -1,4 +1,4 @@
-//stack using single linked list
+//stack using SLL
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,6 +18,9 @@ void create();
 int count = 0;
 
 int main(){
+    int choice;
+    create();
+    while(1){
     puts("Stack operations using linked list");
     puts("1.Push");
     puts("2.Pop");
@@ -25,9 +28,8 @@ int main(){
     puts("4.Display");
     puts("5.Exit");
     puts("Enter your choice: ");
-    int choice;
-    create();
-    while(1){
+
+
         scanf("%d",&choice);
         switch(choice){
             case 1:
@@ -65,12 +67,12 @@ void create(){
 
 void push(int newdata){
     if(top==NULL){
-        top = (node*)malloc(1*sizeof(node));
+        top = (node*)malloc(sizeof(node));
         top->next=NULL;
         top->data = newdata;
     }
     else{
-        temp=(node*)malloc(1*sizeof(node));
+        temp=(node*)malloc(sizeof(node));
         temp->next=top;
         temp->data = newdata;
         top=temp;
