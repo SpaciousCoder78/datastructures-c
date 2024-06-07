@@ -1,56 +1,45 @@
 //array element deletion
 #include <stdio.h>
 
-int *readArray(int n, int *arr){
-    puts("Enter elements to be entered: ");
-    for(int i=0;i<n;i++){
+void readArray(int n,int arr[30]){
+    int i;
+    puts("Enter array elements: \n");
+    for(i=0;i<n;i++){
         scanf("%d",&arr[i]);
     }
-    return arr;
 }
 
-void displayOld(int n, int *arr){
-    puts("The entered array is: \n");
-    for(int i=0;i<n;i++){
+void dispOrgArr(int n, int arr[30]){
+    int i;
+    puts("The array you entered is: ");
+    for(i=0;i<n;i++){
         printf("%d ",arr[i]);
     }
 }
 
-int findEle(int n,int key, int arr[]){
-    int i;
-    for(i=0;i<n;i++){
-        if(arr[i]==key){
-            return i;
-        }
-    }
-    return -1;
-}
+void deleteEle(int n, int arr[30]){
+    int pos, i;
+    puts("\nEnter the position of the element you want to delete: ");
+    scanf("%d", &pos);
 
-int *deleteEle(int n,int key,int arr[]){
-    int pos = findEle(n,key,arr);
-    if(pos==-1){
-        puts("Element not found\n");
+
+    for(i=pos-1; i<n-1; i++){
+        arr[i] = arr[i+1];
     }
-    int i;
-    for(i=pos;i<n-1;i++){
-        arr[i]=arr[i+1];
+
+    n--;
+
+    puts("The new array is: ");
+    for(i=0; i<n; i++){
+        printf("%d ", arr[i]);
     }
-    return arr;
 }
 
 int main(){
-    int n,arr[30],*war,key,*newarr;
-    puts("Enter the size of array: ");
+    int n,arr[30];
+    puts("Enter the size of array");
     scanf("%d",&n);
-    war = readArray(n,arr);
-    displayOld(n,war);
-    puts("Enter element to be deleted: ");
-    scanf("%d",&key);
-    newarr=deleteEle(n,key,war);
-    puts("The new array is: \n");
-    for(int i;i<n-1;i++){
-        printf("%d ",newarr[i]);
-    }
-
-
+    readArray(n,arr);
+    dispOrgArr(n,arr);
+    deleteEle(n,arr);
 }
