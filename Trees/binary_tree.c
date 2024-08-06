@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 typedef struct node {
-    char data;
+    int data;
     struct node * lchild;
     struct node * rchild;
 }BinTree;
@@ -13,7 +13,7 @@ BinTree *createNode() {
     BinTree* newnode;
     newnode = (BinTree*)malloc(sizeof(BinTree));
     printf("Enter data: ");
-    scanf("%c",newnode->data);
+    scanf(" %d",&newnode->data);
     newnode->lchild=NULL;
     newnode->rchild=NULL;
     return newnode;
@@ -29,6 +29,7 @@ BinTree *create() {
         t->lchild=create();
     }
     puts("for right child press 1: ");
+    scanf("%d",&ch);
     if(ch==1) {
         t->rchild=create();
     }
